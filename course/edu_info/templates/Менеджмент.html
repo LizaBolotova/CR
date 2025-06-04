@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="management">
+    <h1>Менеджмент программы</h1>
+
+    <div class="leader">
+        <h2>Академический руководитель</h2>
+        <div class="card">
+            <img src="/media/{{ page.data.management.academic_leader.photo }}" alt="{{ academic_leader.full_name }}" class="round-photo">
+            <div class="info">
+                <h3>{{ page.data.management.academic_leader.full_name }}</h3>
+                <p>{{ page.data.management.academic_leader.email }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="team">
+        <h2>Менеджеры</h2>
+        <div class="cards">
+            {% for manager in page.data.management.managers %}
+            <div class="card">
+                <img src="/media/{{ manager.photo }}" alt="{{ manager.full_name }}" class="round-photo">
+                <div class="info">
+                    <h3>{{ manager.full_name }}</h3>
+                    <p>{{ manager.email }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

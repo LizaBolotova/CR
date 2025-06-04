@@ -1,0 +1,113 @@
+/* Навигация */
+.navbar {
+    min-height: 70px;
+    font-size: 1.2rem;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.7rem 1.2rem;
+    font-size: 1.2rem;
+}
+
+.nav-tabs .nav-link:not(.active) {
+    color: #6c757d !important;
+}
+
+/* "Подсвечивание" карточек */
+
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Подробная инфо про курс */
+
+.course-detail-container {
+    width: 800px;
+    margin: 40px auto;
+}
+
+.course-main-block {
+    background: #cbdde1;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.course-title {
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.course-description {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.detail-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.detail-label {
+    color: #6c757d;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.detail-value {
+    font-size: 20px;
+    margin: 0;
+}
+
+.full-width-card {
+    grid-column: span 2;
+}
+
+/* Поисковая строчка */
+
+.search-container {
+    margin: 30px 0;
+    clear: both;
+}
+
+.search-form {
+    display: inline-block;
+}
+
+.search-input {
+    width: 300px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.search-button:hover {
+    background-color: #333;
+}
+

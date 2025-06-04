@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="profile-container">
+    <header class="profile-header">
+        <h1 class="profile-title">{{page.name}}</h1>
+    </header>
+
+    <main class="profile-main">
+        <div class="photo-section">
+            <img src="/media/{{ page.data.photo }}"
+                 class="profile-image">
+        </div>
+
+        <div class="info-section">
+            <h2 class="user-name">
+                {{ page.data.surname }} {{ page.data.name }} {{ page.data.fname }}
+            </h2>
+
+            <div class="contacts">
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <span class="contact-value">{{ page.data.email }}</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span class="contact-value">{{ page.data.phone }}</span>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <a href="/media/{{ page.data.resume }}"
+                   class="resume-link"
+                   download>
+                    Скачать резюме (PNG)
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

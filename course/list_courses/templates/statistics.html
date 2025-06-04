@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<form method="get" class="mb-4">
+    <!-- Поле поиска -->
+    <div class="mb-3">
+        <input type="text" name="search" class="form-control"
+               placeholder="Поиск по названию" value="{{ search_query }}">
+    </div>
+
+    <!-- Фильтр по категории -->
+    <div class="mb-3">
+        <select name="category" class="form-select">
+            <option value="">Все категории</option>
+            {% for cat in categories %}
+                <option value="{{ cat }}" {% if cat == current_category %}selected{% endif %}>
+                    {{ cat }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Сортировка -->
+    <div class="mb-3">
+        <select name="sort" class="form-select">
+            {% for value, label in sort_fields %}
+                <option value="{{ value }}" {% if current_sort == value %}selected{% endif %}>
+                    {{ label }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Кнопки -->
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Применить</button>
+        <a href="?" class="btn btn-outline-secondary">Отменить</a>
+    </div>
+</form>
+
+<table class="table table-striped-columns">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Название курса</th>
+      <th scope="col">Направление</th>
+      <th scope="col">Длительность (в неделях)</th>
+      <th scope="col">Формат обучения</th>
+      <th scope="col">Стоимость (в рублях)</th>
+      <th scope="col">Количество студентов</th>
+      <th scope="col">Средний балл выпускников курса</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for course in courses %}
+        <tr>
+          <th scope="row">{{course.name}}</th>
+          <td>{{course.category}}</td>
+          <td>{{course.length}}</td>
+          <td>{{course.format}}</td>
+          <td>{{course.cost}}</td>
+          <td>{{course.stud_amount}}</td>
+          <td>{{course.avg_grade}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Таблички -->
+<div class="row g-2 mt-2">
+    <!-- Табличка по длительности -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">Длительность курсов</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr><td>Средняя</td><td>{{ stats.avg_length }} нед.</td></tr>
+                        <tr><td>Минимальная</td><td>{{ stats.min_length }} нед.</td></tr>
+                        <tr><td>Максимальная</td><td>{{ stats.max_length }} нед.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Табличка по стоимости -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-success text-white">
+                <h5 class="card-title mb-0">Стоимость</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr><td>Средняя</td><td>{{ stats.avg_cost }} ₽</td></tr>
+                        <tr><td>Минимальная</td><td>{{ stats.min_cost }} ₽</td></tr>
+                        <tr><td>Максимальная</td><td>{{ stats.max_cost }} ₽</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Табличка по студентам -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-info text-white">
+                <h5 class="card-title mb-0">Студенты</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr><td>Среднее</td><td>{{ stats.avg_students }}</td></tr>
+                        <tr><td>Минимум</td><td>{{ stats.min_students }}</td></tr>
+                        <tr><td>Максимум</td><td>{{ stats.max_students }}</td></tr>
+                        <tr><td>Всего</td><td>{{ stats.total_students }}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Табличка по оценкам -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="card-title mb-0">Успеваемость</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr><td>Средний балл</td><td>{{ stats.avg_grade_global }}</td></tr>
+                        <tr><td>Минимальный</td><td>{{ stats.min_grade }}</td></tr>
+                        <tr><td>Максимальный</td><td>{{ stats.max_grade }}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

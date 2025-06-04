@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
+    <div class="container-fluid d-flex justify-content-center">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a
+              {% if request.path == '/list_courses/' %}
+                  class="nav-link active"
+              {% else %}
+                  class="nav-link"
+              {% endif %}
+              id='home' href="{% url 'all_courses' %}">
+              Курсы
+          </a>
+        <li class="nav-item">
+          <a
+              {% if request.path == '/list_courses/statistics/' %}
+                  class="nav-link active"
+              {% else %}
+                  class="nav-link"
+              {% endif %}
+              id='home' href="{% url 'statistics' %}">
+              Статистика
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+              {% if request.path == '/list_courses/form/' %}
+                  class="nav-link active"
+              {% else %}
+                  class="nav-link"
+              {% endif %}
+              id='home' href="{% url 'form' %}">
+              Форма
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Главная</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>

@@ -1,0 +1,103 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="team">
+        <h2>Сокурсники</h2>
+        <div class="cards">
+            {% for classmate in page.data.classmates %}
+            <div class="card">
+                <img src="/media/{{ classmate.photo }}" alt="{{ classmate.full_name }}" class="round-photo">
+                <div class="info">
+                    <h3>{{ classmate.full_name }}</h3>
+                    <p>{{ classmate.email }}</p>
+                    <p>{{ classmate.phone }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</div>
+<h3>Информация о сокурсниках</h3>
+<!-- Фильтрация -->
+<form method="get" class="row g-3 mb-4">
+    <!-- Фильтр по группе -->
+    <div class="col-md-3">
+        <label for="group" class="form-label">Группа:</label>
+        <select class="form-select" id="group" name="group" onchange="this.form.submit()">
+            <option value="all" {% if current_group_filter == 'all' %}selected{% endif %}>Все группы</option>
+            {% for group in all_groups %}
+                <option value="{{ group }}" {% if current_group_filter == group %}selected{% endif %}>{{ group }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Фильтр по возрасту -->
+    <div class="col-md-3">
+        <label for="age" class="form-label">Возраст:</label>
+        <select class="form-select" id="age" name="age" onchange="this.form.submit()">
+            <option value="all" {% if current_age_filter == 'all' %}selected{% endif %}>Все возраста</option>
+            <option value="22+" {% if current_age_filter == '22+' %}selected{% endif %}>22 и старше</option>
+            <option value="21-" {% if current_age_filter == '21-' %}selected{% endif %}>Младше 22</option>
+        </select>
+    </div>
+
+    <!-- Фильтр по рейтингу -->
+    <div class="col-md-3">
+        <label for="grade" class="form-label">Рейтинг:</label>
+        <select class="form-select" id="grade" name="grade" onchange="this.form.submit()">
+            <option value="all" {% if current_grade_filter == 'all' %}selected{% endif %}>Весь рейтинг</option>
+            <option value="7+" {% if current_grade_filter == '7+' %}selected{% endif %}>7.0 и выше</option>
+            <option value="8+" {% if current_grade_filter == '8+' %}selected{% endif %}>8.0 и выше</option>
+            <option value="9+" {% if current_grade_filter == '9+' %}selected{% endif %}>9.0 и выше</option>
+        </select>
+    </div>
+<!-- Сортировка -->
+    <div class="col-md-3">
+        <label for="sort" class="form-label">Сортировка:</label>
+        <select class="form-select" id="sort" name="sort" onchange="this.form.submit()">
+            <!-- По ФИО -->
+            <option value="full_name" {% if current_sort == 'full_name' %}selected{% endif %}>По имени (А-Я)</option>
+            <option value="-full_name" {% if current_sort == '-full_name' %}selected{% endif %}>По имени (Я-А)</option>
+            <!-- По группе -->
+            <option value="group" {% if current_sort == 'group' %}selected{% endif %}>По группе (От наименьшего)</option>
+            <option value="-group" {% if current_sort == '-group' %}selected{% endif %}>По группе (От наибольшего)</option>
+            <!-- По возрасту -->
+            <option value="age" {% if current_sort == 'age' %}selected{% endif %}>По возрасту (От наименьшего)</option>
+            <option value="-age" {% if current_sort == '-age' %}selected{% endif %}>По возрасту (От наибольшего)</option>
+            <!-- По баллу -->
+            <option value="grade" {% if current_sort == 'grade' %}selected{% endif %}>По баллу (От наименьшего)</option>
+            <option value="-grade" {% if current_sort == '-grade' %}selected{% endif %}>По баллу (От наибольшего)</option>
+        </select>
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+        <a href="?group=all&age=all&grade=all&sort=full_name" class="btn btn-outline-secondary w-100">
+            Сбросить фильтры
+        </a>
+    </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">ФИО</th>
+      <th scope="col">Группа</th>
+      <th scope="col">Возраст</th>
+      <th scope="col">Исследовательские интересы</th>
+      <th scope="col">Навыки</th>
+      <th scope="col">Средний балл</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for classmate in classmates %}
+        <tr>
+          <th scope="row">{{classmate.full_name}}</th>
+          <td>{{classmate.academic_group}}</td>
+          <td>{{classmate.age}}</td>
+          <td>{% for i in classmate.research_interests %} <li>{{i}}</li> {% endfor %}</td>
+          <td>{% for i in classmate.skills %} <li>{{i}}</li> {% endfor %}</td>
+          <td>{{classmate.avg_grade}}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

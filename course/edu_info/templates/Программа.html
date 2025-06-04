@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<div class="program-page">
+    <div class="program-header">
+        <h1>Моя образовательная программа</h1>
+        <h2>{{ page.data.program_name }}</h2>
+        <a href="{{ page.data.program_link }}" class="program-link" target="_blank">Официальная страница ОП</a>
+    </div>
+
+    <div class="program-section">
+        <h3> Что я буду изучать</h3>
+        <ul class="program-list">
+            {% for i in page.data.study_plan %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="program-section">
+        <h3> Чему я научусь</h3>
+        <ul class="program-list">
+            {% for i in page.data.skills %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="program-section">
+        <h3> Преимущества программы</h3>
+        <ul class="program-list">
+            {% for i in page.data.advantages %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="program-section">
+        <h3>Перспективы после обучения</h3>
+        <ul class="program-list">
+            {% for i in page.data.career_prospects %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,317 @@
+/* Навигация */
+
+.custom-navbar {
+    background-color: #0d6efd;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.custom-nav-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.custom-nav-item {
+    margin: 0 0.5rem;
+}
+
+.custom-nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.custom-nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.custom-active-link {
+    background-color: white;
+    color: #0d6efd !important;
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Главная страница */
+
+.portal-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.portal-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #333;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.app-button {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.app-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+.app-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+}
+
+#edu-info::before {
+    background-image: url('/media/edu_info_photos/else/meet.png');
+}
+
+#list-courses::before {
+    background-image: url('/media/edu_info_photos/else/course.png');
+}
+
+.app-button a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.app-button button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+.app-button button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Я */
+.profile-container {
+    width: 800px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+}
+
+.profile-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Фото */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+    border: 2px solid #e0e0e0;
+}
+
+/* Инфо */
+.user-name {
+    text-align: center;
+    color: #444;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+.contacts {
+    margin-bottom: 25px;
+}
+
+.contact-item {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contact-icon {
+    margin-right: 8px;
+}
+
+/* Ссылка на резюме */
+.resume-link {
+    display: block;
+    text-align: center;
+    color: #0066cc;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.resume-link:hover {
+    text-decoration: underline;
+}
+
+/* Стили для Программы */
+
+.program-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.program-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.program-header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.program-header h2 {
+    color: #3498db;
+    margin-bottom: 15px;
+}
+
+.program-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.program-link:hover {
+    text-decoration: underline;
+}
+
+/* Секции */
+.program-section {
+    margin-bottom: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.program-section h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.program-list {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.program-list li {
+    margin-bottom: 8px;
+}
+
+/* Менеджмент */
+
+.management {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.management h1 {
+    text-align: center;
+    color: #333;
+}
+
+.management h2 {
+    color: #2a5885;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 15px 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.round-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 2px solid #f0f0f0;
+}
+
+.info h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.info p {
+    margin: 0;
+    color: #555;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cards .card {
+    flex: 1 1 300px;
+    min-width: 0;
+}
