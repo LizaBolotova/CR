@@ -33,6 +33,7 @@ def form(request):
         forma = CourseForm(request.POST, request.FILES)
         if forma.is_valid():
             forma.save()
+            return HttpResponseRedirect('/')
     else:
         forma = CourseForm()
     return render(request, 'form.html', context={'form': forma})
