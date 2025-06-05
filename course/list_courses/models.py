@@ -16,6 +16,6 @@ class Course(models.Model):
 
 
     def __str__(self):
-        return f'{self.name} - {self.category} - {self.length} - {self.formatt} - {self.cost} - {self.sertificate}'
+        return f'{self.name} - {self.category} - {self.length} - {self.format} - {self.cost} - {self.sertificate}'
 
 
